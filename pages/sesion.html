@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | Plataforma de Eventos</title>
+  <!-- Sube un nivel hacia css/ -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="body-login">
+
+<main class="tarjeta-sesion">
+    
+    <header class="encabezado-sesion">
+      <h2>Ingreso a la Plataforma</h2>
+      <p>Ingresa tus credenciales para acceder a los eventos.</p>
+    </header>
+
+    <!-- Mensaje de error para JavaScript -->
+    <p id="mensaje-error" class="mensaje-error"></p>
+
+    <!-- Formulario -->
+    <form id="formulario-login" class="form-sesion">
+      
+      <div class="campo">
+        <label for="usuario">Usuario o Correo:</label>
+        <input 
+          type="text" 
+          id="usuario" 
+          name="usuario" 
+          placeholder="admin@eventos.com" 
+          required 
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="campo">
+        <label for="password">Contraseña:</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="••••••••" 
+          required 
+          autocomplete="current-password"
+        >
+      </div>
+
+      <button type="submit" class="btn-ingresar">Ingresar</button>
+    </form>
+
+    <footer class="pie-sesion">
+      <a href="../index.html" class="enlace-volver">← Volver al inicio</a>
+    </footer>
+
+  </main>
+  <script>
+    // 1. Credenciales predefinidas que tú eliges
+const USUARIO_VALIDO = "seba"; // o un nombre de usuario como "admin"
+const PASSWORD_VALIDO = "riwi";
+
+// 2. Escuchar el evento de envío del formulario
+const formLogin = document.getElementById("formulario-login");
+const mensajeError = document.getElementById("mensaje-error");
+
+formLogin.addEventListener("submit", function (evento) {
+  // Evitar que la página se recargue automáticamente
+  evento.preventDefault();
+
+  // Obtener lo que el usuario escribió en los inputs
+  const usuarioIngresado = document.getElementById("usuario").value.trim();
+  const passwordIngresado = document.getElementById("password").value.trim();
+
+  // 3. Validar si coinciden con los datos predefinidos
+  if (usuarioIngresado === USUARIO_VALIDO && passwordIngresado === PASSWORD_VALIDO) {
+    // Guardar en la sesión del navegador que ya inició sesión
+    sessionStorage.setItem("usuario_autenticado", "true");
+
+    // 4. Redirigir a la página de eventos:
+    // Si estás en pages/login.html, eventos.html está en la misma carpeta:
+    window.location.href = "./../pages/eventos.html";
+  } else {
+    // Mostrar mensaje si los datos son incorrectos
+    mensajeError.textContent = "Usuario o contraseña incorrectos. Intenta de nuevo.";
+    mensajeError.style.display = "block";
+  }
+});
+  </script>
+
+</body>
+</html>
