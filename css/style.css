@@ -44,14 +44,6 @@ body {
   cursor: pointer;
 }
 
-.tarjeta {
-  background-color: rgb(243, 236, 170);
-  color: rgb(226, 7, 91);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
 .img-card {
   max-width: 200px;
   width: 100%;
@@ -59,6 +51,10 @@ body {
   object-fit: cover;
   display: block;
   margin: 0 auto;
+}
+
+button a{
+  color: black;
 }
 
 /* ===================================================
